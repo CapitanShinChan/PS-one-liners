@@ -16,3 +16,13 @@ Start-BitsTransfer -Source "https://file.com/file.txt" -Destination ".\file.txt"
 ```Powershell
 [System.Convert]::ToBase64String($(gc .\olakase.exe -Encoding Byte))
 ```
+* Write base64 string as a binary file
+```Powershell
+Set-Content -Path .\are_you_Rick_Sanchez.exe -Value $([System.Convert]::FromBase64String($b64)) -Encoding Byte
+```
+
+## Gathering info about AD, users, groups, sessions, shares, etc...
+* List all users logged on the current machine
+```Powershell
+$(Get-CimInstance Win32_LoggedOnUser).antecedent.name | Select-Object -Unique
+```
