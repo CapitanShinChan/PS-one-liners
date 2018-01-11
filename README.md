@@ -11,3 +11,8 @@ Simple but usefull Powershell one-line commands for daily tasks
 Invoke-WebRequest -Uri "https://file.com/file.txt" -OutFile "C:\file.txt"
 Start-BitsTransfer -Source "https://file.com/file.txt" -Destination ".\file.txt"
 ```
+
+* Read file as bytes and convert it to base64
+```Powershell
+[System.Convert]::ToBase64String($(gc .\olakase.exe -Encoding Byte))
+```
