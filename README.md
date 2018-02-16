@@ -14,7 +14,7 @@ Start-BitsTransfer -Source "https://file.com/file.txt" -Destination ".\file.txt"
 
 * Process a file line by line and do any operation
 ```Powershell
-foreach ($line in [System.IO.File]::ReadLines('D:\Liberty\hosts_connection.txt')) { Resolve-DnsName $line | select Name,IP4Address}
+foreach ($line in [System.IO.File]::ReadLines($file)) { Resolve-DnsName $line | select Name,IP4Address}
 ```
 
 * Read file as bytes and convert it to base64
