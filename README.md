@@ -12,6 +12,10 @@ Invoke-WebRequest -Uri "https://file.com/file.txt" -OutFile "C:\file.txt"
 Start-BitsTransfer -Source "https://file.com/file.txt" -Destination ".\file.txt"
 ```
 
+* Process a file line by line and do any operation
+```Powershell
+foreach ($line in [System.IO.File]::ReadLines('D:\Liberty\hosts_connection.txt')) { Resolve-DnsName $line | select Name,IP4Address}```
+
 * Read file as bytes and convert it to base64
 ```Powershell
 [System.Convert]::ToBase64String($(gc .\olakase.exe -Encoding Byte))
