@@ -26,6 +26,12 @@ foreach ($line in [System.IO.File]::ReadLines($file)) { Resolve-DnsName $line | 
 Set-Content -Path .\are_you_Rick_Sanchez.exe -Value $([System.Convert]::FromBase64String($b64)) -Encoding Byte
 ```
 
+* List all listening ports in the local machine and get the process name associated to them
+```Powershell
+Get-NetTCPConnection | Where {$_.State -eq "Listen"} | Select local*,state,@{Name="Process";Expression={(Get-Process -Id $_.OwningProcess).ProcessName}},@{Name="Description";Expression={(Get-Process -Id $_.OwningProcess).Description}}| sort -Property LocalAddress | ft -AutoSize
+```
+
+
 ## Gathering info about AD, users, groups, sessions, shares, etc...
 * List all users logged on the current machine
 ```Powershell
